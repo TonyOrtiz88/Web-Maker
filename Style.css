@@ -1,5 +1,14 @@
 body{
     padding-top: 75px;
-
+    padding-bottom: 75px;
 }
 
+nav a {
+    color: white;
+    float: right;
+}
+
+
+.full-width {
+    width: 100%
+}
