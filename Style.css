@@ -8,6 +8,9 @@ nav a {
     float: right;
 }
 
+label {
+    font-weight: 700;
+}
 
 .full-width {
     width: 100%
