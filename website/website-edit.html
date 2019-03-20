@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="../Style.css">
+    <title>Website Edit</title>
+</head>
+<body>
+        <nav class="navbar navbar-dark bg-info fixed-top row">
+                <div class="col-lg-4 d-none d-lg-block">
+                    <a class="float-left pt-2" href="website-list.html"><i class="far fa-arrow-alt-circle-left"></i></a>
+                    <span class="navbar-brand mb-0 h1 ml-3">Websites</span>
+                    <a class="float-right pt-2" href="website-new.html"><i class="fas fa-plus-circle"></i></a>
+                </div>
+                <div class="col-lg-8">
+                    <span class="navbar-brand mb-0 h1">New Website</span>
+                    <a href="website-list.html"><i class="fas fa-check pt-2"></i></a>
+                </div>
+            </nav>
+                <section class="row">
+                    <div class="col-lg-4 d-none d-lg-block">
+                        <div class="container">
+                            <ul class="list-group">
+                                    <li class="list-group-item">
+                                         <a href="../page/page-list.html">Address Book App</a>
+                                         <a class="float-right" href="website-edit.html"><i class="fas fa-cogs"></i></a>
+                                    </li>
+                                        <li class="list-group-item">
+                                            <a href="../page/page-list.html">Blogger</a>
+                                            <a class="float-right" href="website-edit.html"><i class="fas fa-cogs"></i></a>
+                                        </li>
+                                    <li class="list-group-item">
+                                        <a href="../page/page-list.html">Blogger App</a>
+                                        <a class="float-right" href="website-edit.html"><i class="fas fa-cogs"></i></a>
+                                    </li>
+                                <li class="list-group-item">
+                                    <a href="../page/page-list.html">Script Testing App</a>
+                                    <a class="float-right" href="website-edit.html"><i class="fas fa-cogs"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="container">
+                            <Form>
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input placeholder="Enter website name..." class="form-control" type="text" id="name" name="name">
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <textarea placeholder="Enter website description..." class="form-control" name="description" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <a class="btn btn-danger btn-block" href="login.html">Delete</a>
+                            </Form>
+                        </div>
+                    </div>
+                </section>
+                    <nav class="navbar navbar-dark bg-info fixed-bottom">
+                        <div class="full-width">
+                           <a href="../user/profile.html"><i class="fas fa-user"></i></a>
+                       </div>
+                   </nav>
+    
+</body>
+</html>
