@@ -1,12 +1,29 @@
+/*Editor notes
+
+back buton- "far fa-arrow-alt-circle-left"
+Plus button- "fas fa-plus-circle"
+cogs button- "fas fa-cogs"
+user button- "fas fa-user"
+main color- "text-info"
+blue color- "text-primary"
+red color- "text-danger"
+
+*/
+
+
 body{
     padding-top: 75px;
     padding-bottom: 75px;
 }
 
-nav a {
+
+nav.navbar-dark a {
     color: white;
     float: right;
 }
+
+
+/*Utility */
 
 label {
     font-weight: 700;
@@ -15,10 +32,16 @@ label {
 .full-width {
     width: 100%
 }
-
-/*Utility */
-
 .full-height{
     height: 100vh;
     color: aqua;
+}
+
+/* */
+
+/* pages*/
+
+nav.navbar-light a {
+    color: aquamarine;
+
 }
