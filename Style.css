@@ -2,7 +2,7 @@
 
 back buton- "far fa-arrow-alt-circle-left"
 Plus button- "fas fa-plus-circle"
-cogs button- "fas fa-cogs"
+cogs button- "fas fa-cog"
 user button- "fas fa-user"
 main color- "text-info"
 blue color- "text-primary"
@@ -37,7 +37,11 @@ label {
     color: aqua;
 }
 
-/* */
+/*Widget */
+
+.second-color{
+    color: aquamarine;
+}
 
 /* pages*/
 
