@@ -10,39 +10,39 @@
     <title>Widget Heading</title>
 </head>
 <body>
-        <nav class="navbar fixed-top navbar-light bg-secondary">
-            <a href="../website/website-list.html"><i class="far fa-arrow-alt-circle-left"></i></a>
-            <span class="navbar-brand mb-0 h1 text-info">Widget Edit</span>
-            <a href="widget-list.html"><i class="fas fa-check"></i></a>
+    <nav class="navbar fixed-top navbar-light bg-secondary">
+        <a href="widget-list.html"><i class="far fa-arrow-alt-circle-left"></i></a>
+        <span class="navbar-brand mb-0 h1 text-info">Widget Edit</span>
+        <a href="widget-list.html"><i class="fas fa-check"></i></a>
+    </nav>
+    <div class="container">
+        <form>
+    <div class="form-group">
+        <label class="text-info" for="page-name">Name</label>
+        <input class="form-control" type="text" id="page-name" name="page-name">
+    </div>
+    <div class="form-group">
+        <label class="text-info" for="text">Text</label>
+        <input placeholder="Description or Content" type="text" class="form-control" id="text" name="description">
+    </div>
+    <div class="form-group">
+        <label class="text-info" for="size">Width</label>
+        <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Size #">
+        <div class="input-group-append">
+            <span class="input-group-text">Text Size</span>
+        </div>
+        </div>
+    </div>
+        </form>
+    <span></span>
+        <a class="btn btn-danger btn-block" href="widget-list.html">Delete</a>
+    </div>
+    <nav class="navbar navbar-light fixed-bottom bg-secondary">
+        <div class="full-width">
+        <a class="float-right" href="../user/profile.html"><i class="fas fa-user"></i></a>
+        </div>
         </nav>
-        <div class="container">
-            <form>
-        <div class="form-group">
-            <label class="text-info" for="page-name">Name</label>
-            <input class="form-control" type="text" id="page-name" name="page-name">
-        </div>
-        <div class="form-group">
-            <label class="text-info" for="text">Text</label>
-            <input placeholder="Description or Content" type="text" class="form-control" id="text" name="description">
-        </div>
-        <div class="form-group">
-            <label class="text-info" for="size">Width</label>
-            <div class="input-group mb-3">
-                <input type="number" class="form-control" placeholder="Size #">
-            <div class="input-group-append">
-                <span class="input-group-text">%</span>
-            </div>
-            </div>
-        </div>
-            </form>
-        <span></span>
-            <a class="btn btn-danger btn-block" href="login.html">Delete</a>
-        </div>
-        <nav class="navbar navbar-light fixed-bottom bg-secondary">
-            <div class="full-width">
-            <a class="float-right" href="../user/profile.html"><i class="fas fa-user"></i></a>
-            </div>
-            </nav>
     
 </body>
 </html>
