@@ -1,0 +1,65 @@
+/*Editor notes
+
+check button- "fas fa-check"
+back buton- "far fa-arrow-alt-circle-left"
+Plus button- "fas fa-plus-circle"
+cogs button- "fas fa-cog"
+user button- "fas fa-user"
+main color- "text-info"
+blue color- "text-primary"
+red color- "text-danger"
+
+*/
+
+
+body{
+    padding-top: 75px;
+    padding-bottom: 75px;
+}
+
+
+nav.navbar-dark a {
+    color: white;
+    float: right;
+}
+
+
+/*Utility */
+
+
+a, a:hover {
+    text-decoration: none;
+}
+label {
+    font-weight: 700;
+}
+
+.full-width {
+    width: 100%;
+}
+.full-height{
+    height: 100vh;
+    color: aqua;
+}
+
+/*Widget */
+
+.second-color{
+    color: aquamarine;
+}
+.icon-right {
+    position: absolute;
+    right: 15px;
+    z-index: 1;
+    background: gray;
+    border-radius: 5px 0 0 5px;
+    padding: 1px;
+
+}
+
+/* pages*/
+
+nav.navbar-light a {
+    color: aquamarine;
+
+}
