@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from "react-router-dom";
 
 export default class Profile extends Component {
   render() {
@@ -27,7 +28,7 @@ export default class Profile extends Component {
                 <input placeholder="Enter your last name here..." type="text" className="form-control" id="lastName" name="lastName"/>
             </div>
             <a className="btn btn-info btn-block" href="../website/website-list.html">Websites</a>
-            <a className="btn btn-danger btn-block" href="login.html">Logout</a>
+            <Link className="btn btn-danger btn-block" to="/login">Logout</Link>
         </form>
         </div>
         <nav className="navbar navbar-dark bg-info fixed-bottom">
