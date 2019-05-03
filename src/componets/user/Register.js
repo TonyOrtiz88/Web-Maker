@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 export default class Register extends Component {
+
+state = {
+  
+}
+  
   render() {
     return (
       <div>
@@ -19,8 +25,12 @@ export default class Register extends Component {
                 <label className="text-primary" for="password2">Verify Password</label>
                 <input placeholder="Re-enter your password here..." type="password" className="form-control" id="password2" name="password"/>
             </div>
-            <a className="btn btn-info btn-block" href="profile.html">Register</a>
-            <a className="btn btn-danger btn-block" href="login.html">Cancel</a>
+            <button className="btn btn-info btn-block">
+              Register
+            </button>
+            <button className="btn btn-danger btn-block">
+            Cancel
+            </button>
         </form>
     </div>
       </div>
