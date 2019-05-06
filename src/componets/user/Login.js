@@ -3,17 +3,17 @@ import {Link} from "react-router-dom";
 
 export default class Login extends Component{
 
-    state = {
-        username: "",
-        password: ""
+state = {
+    username: "",
+    password: ""
     }
 
 
-    onChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
+onChange = e => {
+    this.setState({
+    [e.target.name]: e.target.value
+    })
+}
        
      
 onSubmit = e => {
@@ -30,7 +30,7 @@ login = user => {
     for(let item of this.props.users) {
         if(item.username === user.username && item.password === user.password) {
             this.props.history.push("/user/" + item._id)
-            break;
+            return;
         }
     }
     alert("Your Username and/or Password doesn't match our records")
@@ -66,9 +66,9 @@ login = user => {
                     onChange = {this.onChange}
                     />
                 </div>
-                <button className="btn btn-info btn-block">
-                Login
-                </button>
+                    <button className="btn btn-info btn-block">
+                        Login
+                    </button>
                 <Link className="btn btn-primary btn-block" to="/register">
                 Register
                 </Link>
