@@ -14,8 +14,19 @@ import WidgetList from './componets/widget/WidgetList';
 import WidgetChooser from './componets/widget/WidgetChooser';
 
 
-
 class App extends Component {
+
+addUser = (user) => {
+   const newUsers = this.state.users;
+   newUsers.push(user);
+   this.setState({
+       users: newUsers
+   });
+}
+
+updateUser = (NewUser) => {
+    const newUsers = this.state.users.map(()=>{})
+}
 
 state = {
   users: [
@@ -56,7 +67,7 @@ render() {
           <Route exact path="/" render = { props => (<Login {...props} users={this.state.users}/>)} />
           <Route exact path="/login" render = { props => (<Login {...props} users={this.state.users}/>)} />
           <Route exact path= "/user/:uid" render = { props => (<Profile {...props} users={this.state.users}/>)} />
-          <Route exact path= "/register" render = { props => (<Register {...props} users={this.state.users}/>)} />
+          <Route exact path= "/register" render = { props => (<Register {...props} users={this.state.users} addUser={this.addUser}/>)} />
           <Route exact path= "/user/:uid/website" render = { props => (<WebSiteList {...props} users={this.state.users}/>)} />
           <Route exact path= "/user/:uid/website/new" component={WebSiteNew}/>
           <Route exact path= "/user/:uid/website/:wid" component={WebSiteEdit}/>

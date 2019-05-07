@@ -11,7 +11,7 @@ state = {
 
 onChange = e=> {
   this.setState({
-    [e.target.name]: e.tartget.value
+    [e.target.name]: e.target.value
   })
 }
 
@@ -34,6 +34,15 @@ register(username, password, password2) {
       }
     }
     // Add new user into users array;
+    const newUser = {
+      _id: (parseInt (this.props.users[this.props.users.length -1]._id) + 1).toString(),
+      username,
+      password
+    };
+    this.props.addUser(newUser);
+    // navigate to profile
+    this.props.history.push("/user/" + newUser._id)
+
 }
 
   render() {

@@ -17,6 +17,10 @@ body{
     padding-bottom: 75px;
 }
 
+nav a, nav button i {
+    color: white;
+}
+
 
 nav.navbar-dark a {
     color: white;
