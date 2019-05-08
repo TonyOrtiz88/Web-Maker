@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 
 export default class Profile extends Component {
 
-state = {
-  username: "",
-  email: "",
-  firstName: "",
-  lastName: ""
-}
+  state = {
+    username: "",
+    password: "",
+    email: "",
+    firstName: "",
+    lastName: ""
+  }
 
   componentDidMount(){
     const uid = this.props.match.params.uid;
@@ -17,7 +18,7 @@ state = {
     for(let user of this.props.users) {
     if(user._id === uid) {
         currentUser = user;
-        this.showUser(user)
+        this.showUser(currentUser)
         return;
       }
     }
@@ -25,9 +26,9 @@ state = {
   }
 
   showUser = (user) => {
-    const {username, email, firstName, lastName} =user;
+    const {username, email, firstName, lastName, password} =user;
     this.setState({
-      username, email, firstName, lastName
+      username, email, firstName, lastName, password
     })
   }
 
@@ -39,10 +40,11 @@ state = {
 
   onSubmit = e => {
     e.preventDefault();
-    const {username, email, firstName, lastName} =this.state;
-    const newUser {
+    const {username, email, firstName, lastName, password} =this.state;
+    const newUser = {
       _id: this.props.match.params.uid,
       username,
+      password,
       email, 
       firstName, 
       lastName
@@ -57,14 +59,14 @@ state = {
       <div>
     <nav className="navbar navbar-dark bg-info fixed-top">
         <span className="navbar-brand mb-0 h1">Profile</span>
-        <button className="btn" form="profileform" href="profile.html">
+        <button className="btn" form="profileForm" href="profile.html">
         <i className="fas fa-check" />
         </button>
     </nav>
     <div className="container">
       <form id="profileForm" onSubmit={this.onSubmit}>
             <div className="form-group">
-                <label className="text-primary" for="username">Username</label>
+                <label className="text-primary" htmlFor="username">Username</label>
                 <input
                 placeholder="Enter your username here..."
                 className="form-control"
@@ -76,7 +78,7 @@ state = {
                 />
             </div>
             <div className="form-group">
-                <label className="text-primary" for="email">Email</label>
+                <label className="text-primary" htmlFor="email">Email</label>
                 <input 
                 placeholder="Enter your email here..." 
                 type="email" 
@@ -88,7 +90,7 @@ state = {
                 />
             </div>
             <div className="form-group">
-                <label className="text-primary" for="password2">First Name</label>
+                <label className="text-primary" htmlFor="password2">First Name</label>
                 <input 
                 placeholder="Enter your first name here..." 
                 type="text" 
@@ -100,7 +102,7 @@ state = {
                 />
             </div>    
             <div className="form-group">
-                <label className="text-primary" for="lastName">Last Name</label>
+                <label className="text-primary" htmlFor="lastName">Last Name</label>
                 <input 
                 placeholder="Enter your last name here..." 
                 type="text" 

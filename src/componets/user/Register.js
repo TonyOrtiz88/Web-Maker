@@ -37,7 +37,10 @@ register(username, password, password2) {
     const newUser = {
       _id: (parseInt (this.props.users[this.props.users.length -1]._id) + 1).toString(),
       username,
-      password
+      password,
+      email: "",
+      firstName: "",
+      lastName: ""
     };
     this.props.addUser(newUser);
     // navigate to profile
@@ -90,9 +93,9 @@ register(username, password, password2) {
                 <button className="btn btn-info btn-block">
                     Register
                 </button>
-                <button className="btn btn-danger btn-block">
+                <Link className="btn btn-danger btn-block" to="/login">
                     Cancel
-                </button>
+                </Link>
         </form>
       </div>
       </div>

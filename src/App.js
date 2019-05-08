@@ -24,9 +24,33 @@ addUser = (user) => {
    });
 }
 
-updateUser = (NewUser) => {
-    const newUsers = this.state.users.map(()=>{})
+userNameInUse =(username) => {
+    for(let user of this.state.users) {
+        if(username === user.username){
+            return true;
+        }
+    }
+    return false;
 }
+
+updateUser = (newUser) => {
+    const newUsers = this.state.users.map((user)=>{
+        if(user._id === newUser._id){
+            if(user.username !== newUser.userName && this.userNameInUse(newUser.username)) {
+                alert("This username is taken");
+            } else {
+                alert("Profile information has been updated ");
+                user = newUser;
+            }
+        }
+        return user;
+    });
+
+    this.setState({
+        users: newUsers
+    })
+}
+
 
 state = {
   users: [
@@ -66,7 +90,7 @@ render() {
       <Router className="app">
           <Route exact path="/" render = { props => (<Login {...props} users={this.state.users}/>)} />
           <Route exact path="/login" render = { props => (<Login {...props} users={this.state.users}/>)} />
-          <Route exact path= "/user/:uid" render = { props => (<Profile {...props} users={this.state.users}/>)} />
+          <Route exact path= "/user/:uid" render = { props => (<Profile {...props} users={this.state.users} updateUser = {this.updateUser} />)} />
           <Route exact path= "/register" render = { props => (<Register {...props} users={this.state.users} addUser={this.addUser}/>)} />
           <Route exact path= "/user/:uid/website" render = { props => (<WebSiteList {...props} users={this.state.users}/>)} />
           <Route exact path= "/user/:uid/website/new" component={WebSiteNew}/>
