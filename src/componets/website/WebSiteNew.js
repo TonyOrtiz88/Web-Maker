@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class WebSiteNew extends Component {
   render() {
@@ -7,12 +7,18 @@ export default class WebSiteNew extends Component {
       <div>
         <nav className="navbar navbar-dark bg-info fixed-top row">
         <div className="col-lg-4 d-none d-lg-block">
-            <a className="float-left pt-2" href="website-list.html"><i className="far fa-arrow-alt-circle-left"></i></a>
+            <Link className="float-left pt-2" to="/user/:uid/website">
+                <i className="far fa-arrow-alt-circle-left"/>
+            </Link>
             <span className="navbar-brand mb-0 h1 ml-3">Websites</span>
-            <a className="float-right pt-2" href="website-new.html"><i className="fas fa-plus-circle"></i></a>
+            <a className="float-right pt-2" href="#">
+                <i className="fas fa-plus-circle"/>
+            </a>
         </div>
         <div className="col-lg-8">
-                <a className="d-lg-none float-left pt-2" href="website-list.html"><i className="far fa-arrow-alt-circle-left"></i></a>
+                <Link className="d-lg-none float-left pt-2" href="website-list.html">
+                    <i className="far fa-arrow-alt-circle-left"/>
+                </Link>
             <span className="navbar-brand mb-0 h1">New Website</span>
             <a href="website-list.html"><i className="fas fa-check pt-2"></i></a>
         </div>

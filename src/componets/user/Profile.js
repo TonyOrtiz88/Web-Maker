@@ -59,8 +59,8 @@ export default class Profile extends Component {
       <div>
     <nav className="navbar navbar-dark bg-info fixed-top">
         <span className="navbar-brand mb-0 h1">Profile</span>
-        <button className="btn" form="profileForm" href="profile.html">
-        <i className="fas fa-check" />
+        <button className="btn" form="profileForm">
+          <i className="fas fa-check" />
         </button>
     </nav>
     <div className="container">
@@ -102,7 +102,9 @@ export default class Profile extends Component {
                 />
             </div>    
             <div className="form-group">
-                <label className="text-primary" htmlFor="lastName">Last Name</label>
+                <label className="text-primary" htmlFor="lastName">
+                  Last Name
+                </label>
                 <input 
                 placeholder="Enter your last name here..." 
                 type="text" 
@@ -113,13 +115,16 @@ export default class Profile extends Component {
                 onChange={this.onChange}
                 />
             </div>
-            <Link className="btn btn-info btn-block" to="../website/website-list.html">Websites</Link>
-            <Link className="btn btn-danger btn-block" to="/login">Logout</Link>
+            <Link className="btn btn-info btn-block" to={`/user/${this.props.match.params.uid}/website`}>Websites
+            </Link>
+            <Link className="btn btn-danger btn-block" to="/login">
+                Logout
+            </Link>
         </form>
         </div>
         <nav className="navbar navbar-dark bg-info fixed-bottom">
             <div className="full-width">
-                <Link to="profile.html"><i className="fas fa-user"></i></Link>
+                <Link to="/user/:uid"><i className="fas fa-user"></i></Link>
             </div>
         </nav>
       </div>
