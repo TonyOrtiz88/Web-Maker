@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 export default class WebSiteEdit extends Component {
   render() {
@@ -6,15 +7,22 @@ export default class WebSiteEdit extends Component {
       <div>
         <nav className="navbar navbar-dark bg-info fixed-top row">
         <div className="col-lg-4 d-none d-lg-block">
-            <a className="float-left pt-2" href="website-list.html"><i className="far fa-arrow-alt-circle-left"></i></a>
-            <span className="navbar-brand mb-0 h1 ml-3">Websites</span>
-            <a className="float-right pt-2" href="website-new.html"><i className="fas fa-plus-circle"></i></a>
+            <Link className="float-left pt-2" to="/user/:uid/website">
+                <i className="far fa-arrow-alt-circle-left"/>
+            </Link>
+                <span className="navbar-brand mb-0 h1 ml-3">Websites</span>
+            <Link className="float-right pt-2" to="/user/:uid/website/new">
+                <i className="fas fa-plus-circle"/>
+            </Link>
         </div>
         <div className="col-lg-8">
-            <a className="d-lg-none float-left pt-2" href="website-list.html"><i
-                    className="far fa-arrow-alt-circle-left"></i></a>
-            <span className="navbar-brand mb-0 h1">Edit Website</span>
-            <a href="website-list.html"><i className="fas fa-check pt-2"></i></a>
+            <Link className="d-lg-none float-left pt-2" to="/user/:uid/website">
+                <i className="far fa-arrow-alt-circle-left"/>
+            </Link>
+                <span className="navbar-brand mb-0 h1">Edit Website</span>
+            <button href="website-list.html">
+                <i className="fas fa-check pt-2"/>
+            </button>
         </div>
     </nav>
 <section className="row">

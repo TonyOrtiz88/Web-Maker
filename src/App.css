@@ -33,6 +33,8 @@ nav.navbar-dark a {
 
 a, a:hover {
     text-decoration: none;
+    text-decoration-color: black;
+   
 }
 label {
     font-weight: 700;
