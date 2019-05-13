@@ -124,7 +124,9 @@ export default class Profile extends Component {
         </div>
         <nav className="navbar navbar-dark bg-info fixed-bottom">
             <div className="full-width">
-                <Link to="/user/:uid"><i className="fas fa-user"></i></Link>
+                <Link to="/user/:123">
+                  <i className="fas fa-user"/>
+                </Link>
             </div>
         </nav>
       </div>

@@ -1,18 +1,22 @@
 import React, {Component} from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route} from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+//Users
 import Login from './componets/user/Login';
 import Profile from './componets/user/Profile';
 import Register from './componets/user/Register';
+//Websites
 import WebSiteList from './componets/website/WebSiteList';
 import WebSiteNew from './componets/website/WebSiteNew';
 import WebSiteEdit from './componets/website/WebSiteEdit';
+//Pages
 import PageEdit from './componets/page/PageEdit';
 import PageNew from './componets/page/PageNew';
 import PageList from './componets/page/PageList';
+//Widgets
 import WidgetList from './componets/widget/WidgetList';
 import WidgetChooser from './componets/widget/WidgetChooser';
-
+import WidgetEdit from './components/widget/WidgetEdit';
 
 class App extends Component {
 
@@ -30,6 +34,7 @@ userNameInUse =(username) => {
             return true;
         }
     }
+
     return false;
 }
 
@@ -39,8 +44,8 @@ updateUser = (newUser) => {
             if(user.username !== newUser.userName && this.userNameInUse(newUser.username)) {
                 alert("This username is taken");
             } else {
-                alert("Profile information has been updated ");
                 user = newUser;
+                alert("Profile information has been updated");
             }
         }
         return user;
@@ -50,6 +55,104 @@ updateUser = (newUser) => {
         users: newUsers
     })
 }
+
+addWeb = (newWeb) => {
+    const newWebs = this.state.websites;
+    newWebs.push(newWeb);
+    this.setState({
+        websites: newWebs
+    });
+}
+
+deleteWeb =(wid) => {
+    this.setState({
+        websites: this.state.websites.filter(
+            (website) => website._id !== wid
+        )
+    })
+}
+
+editWeb = (wid, name, description) => {
+    this.setState({
+        websites: this.state.websites.map(
+            (website) => {
+                if(wid === website._id){
+                    website.name = name;
+                    website.description =description
+                }
+                return website;
+            }
+        )
+    })
+}
+
+addPage = newPage => {
+    const newPages = this.state.pages;
+    newPages.push(newPage);
+    this.setState({
+        pages: newPages
+    });
+}
+
+editPage = newPage => {
+    const newPages = this.state.pages.map(
+        (page) => {
+            if(page._id === newPage._id) {
+                page = newPage
+            }
+            return page;
+        }
+    )
+    this.setState({
+        pages: newPages
+    })
+}
+
+deletePage = pid => {
+    const newPages = this.state.pages.filter(
+        (page) => (
+            page._id !== pid
+        )
+    )
+    this.setState({
+        pages: newPages
+    })
+}
+
+editWidget = newWidget => {
+        
+    const newWidgets = this.state.widgets.map(
+        (widget) => {
+            if(widget._id === newWidget._id) {
+                widget = newWidget
+            }
+            return widget;
+        }
+    )
+    this.setState({
+        widgets: newWidgets
+    })
+}
+
+addWidget = newWidget => {
+    const newWidgets = this.state.widgets;
+    newWidgets.push(newWidget);
+    this.setState({
+        widgets: newWidgets
+    });
+}
+
+deleteWidget = (wgid) => {
+    const newWidgets = this.state.widgets.filter(
+        (widget) => (
+            widget._id !== wgid
+        )
+    )
+    this.setState({
+        widgets: newWidgets
+    })
+}
+
 
 
 state = {
@@ -88,22 +191,24 @@ state = {
 render() {
   return (
       <Router className="app">
-          <Route exact path="/" render = { props => (<Login {...props} users={this.state.users}/>)} />
-          <Route exact path="/login" render = { props => (<Login {...props} users={this.state.users}/>)} />
-          <Route exact path= "/user/:uid" render = { props => (<Profile {...props} users={this.state.users} updateUser = {this.updateUser} />)} />
-          <Route exact path= "/register" render = { props => (<Register {...props} users={this.state.users} addUser={this.addUser}/>)} />
-          <Route exact path= "/user/:uid/website" render = { props => (<WebSiteList {...props} users={this.state.users}/>)} />
-          <Route exact path= "/user/:uid/website/new" component={WebSiteNew}/>
-          <Route exact path= "/user/:uid/website/:wid" component={WebSiteEdit}/>
-          <Route exact path= "/user/:uid/website/:wid/page" component={PageList}/>
-          <Route exact path= "/user/:uid/website/:wid/page/new" component={PageNew}/>
-          <Route exact path= "/user/:uid/website/:wid/page/:pid" component={PageEdit}/>
-          <Route exact path= "/user/:uid/website/:wid/page/:pid/widget" component={WidgetList}/>
-          <Route exact path= "//user/:uid/website/:wid/page/:pid/widget/new" component={WidgetChooser}/>
-          {/* <Route exact path= "/user/:uid/website/:wid/page/:pid/widget/:wgid" component={WidgetEdit}/> */}
-      </Router>
-  );
-}
+            <Switch>
+                <Route exact path="/" render = { props => (<Login {...props} users={this.state.users}/>)} />
+                <Route exact path="/login" render = { props => (<Login {...props} users={this.state.users}/>)} />
+                <Route exact path= "/user/:uid" render = { props => (<Profile {...props} users={this.state.users} updateUser = {this.updateUser} />)} />
+                <Route exact path= "/register" render = { props => (<Register {...props} users={this.state.users} addUser={this.addUser}/>)} />
+                <Route exact path= "/user/:uid/website" render = { props => (<WebSiteList {...props} websites={this.state.websites}/>)} />
+                <Route exact path= "/user/:uid/website/new" render= { props => (<WebSiteNew {...props} websites={this.state.websites}/>)}/>
+                <Route exact path= "/user/:uid/website/:wid" render= { props => (<WebSiteEdit {...props} websites={this.state.websites}/>)}/>
+                <Route exact path="/user/:uid/website/:wid/page" render={ props => (<PageList {...props} pages={this.state.pages} />)} />
+                <Route exact path="/user/:uid/website/:wid/page/new" render={ props => (<PageNew {...props} pages={this.state.pages} addPage={this.addPage} />)} />
+                <Route exact path="/user/:uid/website/:wid/page/:pid" render={ props => (<PageEdit {...props} pages={this.state.pages} editPage={this.editPage} deletePage={this.deletePage} />)} />
+                <Route exact path="/user/:uid/website/:wid/page/:pid/widget" render={ props=>(<WidgetList {...props} widgets={this.state.widgets} />)} />
+                <Route exact path="/user/:uid/website/:wid/page/:pid/widget/new" render={props=>(<WidgetChooser {...props} addWidget={this.addWidget} />)} />
+                <Route exact path="/user/:uid/website/:wid/page/:pid/widget/:wgid" render={ props=>(<WidgetEdit {...props} widgets={this.state.widgets} editWidget={this.editWidget} deleteWidget={this.deleteWidget} />)} />
+            </Switch>
+            </Router>
+        );
+    }
 }
 
 export default App;
