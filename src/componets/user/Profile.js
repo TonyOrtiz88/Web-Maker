@@ -59,77 +59,79 @@ export default class Profile extends Component {
       <div>
     <nav className="navbar navbar-dark bg-info fixed-top">
         <span className="navbar-brand mb-0 h1">Profile</span>
-        <button className="btn" form="profileForm">
-          <i className="fas fa-check" />
-        </button>
+          <button className="btn" form="profileForm">
+            <i className="fas fa-check" />
+          </button>
     </nav>
     <div className="container">
       <form id="profileForm" onSubmit={this.onSubmit}>
             <div className="form-group">
                 <label className="text-primary" htmlFor="username">Username</label>
-                <input
-                placeholder="Enter your username here..."
-                className="form-control"
-                type="text"
-                id="usename"
-                name="username"
-                value={username}
-                onChange={this.onChange}
-                />
+                  <input
+                    placeholder="Enter your username here..."
+                    className="form-control"
+                    type="text"
+                    id="usename"
+                    name="username"
+                    value={username}
+                    onChange={this.onChange}
+                  />
             </div>
             <div className="form-group">
                 <label className="text-primary" htmlFor="email">Email</label>
-                <input 
-                placeholder="Enter your email here..." 
-                type="email" 
-                className="form-control" 
-                id="email" 
-                name="email"
-                value={email}
-                onChange={this.onChange}
-                />
+                  <input 
+                    placeholder="Enter your email here..." 
+                    type="email" 
+                    className="form-control" 
+                    id="email" 
+                    name="email"
+                    value={email}
+                    onChange={this.onChange}
+                  />
             </div>
             <div className="form-group">
                 <label className="text-primary" htmlFor="password2">First Name</label>
-                <input 
-                placeholder="Enter your first name here..." 
-                type="text" 
-                className="form-control" 
-                id="firstName" 
-                name="firstName"
-                value={firstName}
-                onChange={this.onChange}
-                />
+                  <input 
+                    placeholder="Enter your first name here..." 
+                    type="text" 
+                    className="form-control" 
+                    id="firstName" 
+                    name="firstName"
+                    value={firstName}
+                    onChange={this.onChange}
+                  />
             </div>    
             <div className="form-group">
                 <label className="text-primary" htmlFor="lastName">
-                  Last Name
+                    Last Name
                 </label>
-                <input 
-                placeholder="Enter your last name here..." 
-                type="text" 
-                className="form-control" 
-                id="lastName" 
-                name="lastName"
-                value={lastName}
-                onChange={this.onChange}
-                />
+                  <input 
+                    placeholder="Enter your last name here..." 
+                    type="text" 
+                    className="form-control" 
+                    id="lastName" 
+                    name="lastName"
+                    value={lastName}
+                    onChange={this.onChange}
+                  />
             </div>
-            <Link className="btn btn-info btn-block" to={`/user/${this.props.match.params.uid}/website`}>Websites
-            </Link>
+              <Link className="btn btn-info btn-block" to={`/user/${this.props.match.params.uid}/website`}
+              >
+                Websites
+              </Link>
             <Link className="btn btn-danger btn-block" to="/login">
                 Logout
             </Link>
-        </form>
+      </form>
         </div>
-        <nav className="navbar navbar-dark bg-info fixed-bottom">
-            <div className="full-width">
-                <Link to="/user/:123">
-                  <i className="fas fa-user"/>
-                </Link>
-            </div>
-        </nav>
+            <nav className="navbar navbar-dark bg-info fixed-bottom">
+                <div className="full-width">
+                    <Link to="/user/:123">
+                      <i className="fas fa-user"/>
+                    </Link>
+                </div>
+            </nav>
       </div>
-    )
+    );
   }
 }

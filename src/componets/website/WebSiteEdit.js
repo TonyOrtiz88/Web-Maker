@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
-export default class WebSiteEdit extends Component {
+export default class WebsiteEdit extends Component {
     state = {
         uid: this.props.match.params.uid,
         wid: this.props.match.params.wid,
@@ -121,34 +121,55 @@ export default class WebSiteEdit extends Component {
         <form id="editWebForm" onSubmit={this.onSubmit}>
                 <div className="form-group">
                     <label className="text-primary" htmlFor="name">
-                    <b>Name</b>
+                        <b>Name</b>
                     </label>
-                    <input 
-                        placeholder="Name of Website" 
-                        className="form-control" 
-                        type="text" 
-                        id="name" 
-                        name="name"
-                        value={this.state.name}
-                        onChange={this.onChange}
-                    />
+                        <input 
+                            placeholder="Name of Website" 
+                            className="form-control" 
+                            type="text" 
+                            id="name" 
+                            name="name"
+                            value={this.state.name}
+                            onChange={this.onChange}
+                        />
                     <div className="form-group">
-                        <label className="text-primary" for="description">Website Description</label>
-                        <textarea placeholder="Enter website description..." className="form-control" name="description"
-                            rows="5"></textarea>
+                        <label className="text-primary" htmlFor="description">
+                            <b>Description</b>
+                        </label>
+                            <textarea 
+                                id="name"
+                                placeholder="Enter website description..." className="form-control" 
+                                name="description"
+                                type="text"
+                                value={this.state.description}
+                                onChange={this.onChange}
+                                rows="5"
+                            />
                     </div>
                 </div>
-                <a className="btn btn-danger btn-block" href="website-list.html">Delete</a>
-            </form>
+                <Link className="btn btn-danger btn-block" to={`/user/${uid}/website`}>
+                    Cancel
+                </Link>
+                    <button
+                        type="button"
+                        onClick={this.delete}
+                        className="btn btn-lg btn-danger float-right"
+                    >
+                        Delete
+                    </button>
+                </form>
         </div>
     </div>
-</section>
-    <nav className="navbar navbar-dark bg-info fixed-bottom">
-        <div className="full-width">
-            <a href="../user/profile.html"><i className="fas fa-user"></i></a>
-        </div>
-    </nav>
+</div>
+        <nav className="navbar navbar-dark bg-info fixed-bottom">
+            <div className="full-width">
+                <Link to={`/user/${uid}`}
+            > 
+                    <i className="fas fa-user"/>
+                </Link>
+            </div>
+        </nav>
       </div>
-    )
+    );
   }
 }

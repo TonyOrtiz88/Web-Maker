@@ -6,9 +6,9 @@ import Login from './componets/user/Login';
 import Profile from './componets/user/Profile';
 import Register from './componets/user/Register';
 //Websites
-import WebSiteList from './componets/website/WebSiteList';
-import WebSiteNew from './componets/website/WebSiteNew';
-import WebSiteEdit from './componets/website/WebSiteEdit';
+import WebsiteList from './componets/website/WebsiteList';
+import WebsiteNew from './componets/website/WebsiteNew';
+import WebsiteEdit from './componets/website/WebsiteEdit';
 //Pages
 import PageEdit from './componets/page/PageEdit';
 import PageNew from './componets/page/PageNew';
@@ -16,7 +16,7 @@ import PageList from './componets/page/PageList';
 //Widgets
 import WidgetList from './componets/widget/WidgetList';
 import WidgetChooser from './componets/widget/WidgetChooser';
-import WidgetEdit from './components/widget/WidgetEdit';
+import WidgetEdit from './componets/widget/WidgetEdit';
 
 class App extends Component {
 
@@ -196,9 +196,9 @@ render() {
                 <Route exact path="/login" render = { props => (<Login {...props} users={this.state.users}/>)} />
                 <Route exact path= "/user/:uid" render = { props => (<Profile {...props} users={this.state.users} updateUser = {this.updateUser} />)} />
                 <Route exact path= "/register" render = { props => (<Register {...props} users={this.state.users} addUser={this.addUser}/>)} />
-                <Route exact path= "/user/:uid/website" render = { props => (<WebSiteList {...props} websites={this.state.websites}/>)} />
-                <Route exact path= "/user/:uid/website/new" render= { props => (<WebSiteNew {...props} websites={this.state.websites}/>)}/>
-                <Route exact path= "/user/:uid/website/:wid" render= { props => (<WebSiteEdit {...props} websites={this.state.websites}/>)}/>
+                <Route exact path= "/user/:uid/website" render = { props => (<WebsiteList {...props} websites={this.state.websites}/>)} />
+                <Route exact path= "/user/:uid/website/new" render= { props => (<WebsiteNew {...props} websites={this.state.websites}/>)}/>
+                <Route exact path= "/user/:uid/website/:wid" render= { props => (<WebsiteEdit {...props} websites={this.state.websites}/>)}/>
                 <Route exact path="/user/:uid/website/:wid/page" render={ props => (<PageList {...props} pages={this.state.pages} />)} />
                 <Route exact path="/user/:uid/website/:wid/page/new" render={ props => (<PageNew {...props} pages={this.state.pages} addPage={this.addPage} />)} />
                 <Route exact path="/user/:uid/website/:wid/page/:pid" render={ props => (<PageEdit {...props} pages={this.state.pages} editPage={this.editPage} deletePage={this.deletePage} />)} />
@@ -206,7 +206,7 @@ render() {
                 <Route exact path="/user/:uid/website/:wid/page/:pid/widget/new" render={props=>(<WidgetChooser {...props} addWidget={this.addWidget} />)} />
                 <Route exact path="/user/:uid/website/:wid/page/:pid/widget/:wgid" render={ props=>(<WidgetEdit {...props} widgets={this.state.widgets} editWidget={this.editWidget} deleteWidget={this.deleteWidget} />)} />
             </Switch>
-            </Router>
+        </Router>
         );
     }
 }

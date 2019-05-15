@@ -6,7 +6,7 @@ export default class Register extends Component {
 state = {
   username:"",
   password: "",
-  password: ""
+  password2: ""
 }
 
 onChange = e=> {
@@ -53,42 +53,42 @@ register(username, password, password2) {
     return (
       <div>
         <div className="container">
-        <h1 className="text-info">Register</h1>
-        <form onSubmit={this.onSubmit}>
+          <h1 className="text-info">Register</h1>
+            <form onSubmit={this.onSubmit}>
             <div className="form-group">
                 <label className="text-primary" for="username">Username</label>
-                <input 
-                    placeholder="Create a username here..." className="form-control" 
-                    type="text"
-                    id="usename" 
-                    name="username"
-                    value = {username}
-                    onChange={this.onChange}
-                />
-              </div>
+                  <input 
+                      placeholder="Create a username here..." className="form-control" 
+                      type="text"
+                      id="usename" 
+                      name="username"
+                      value = {username}
+                      onChange={this.onChange}
+                  />
+            </div>
             <div className="form-group">
-                <label className="text-primary" for="password">Password</label>
-                <input 
-                    placeholder="Creat a password here..."
-                    type="password" 
-                    className="form-control" 
-                    id="password" 
-                    name="password"
-                    value = {password}
-                    onChange={this.onChange}
-                />
+                <label className="text-primary" htmlFor="password">Password</label>
+                  <input 
+                      placeholder="Creat a password here..."
+                      type="password" 
+                      className="form-control" 
+                      id="password" 
+                      name="password"
+                      value = {password}
+                      onChange={this.onChange}
+                  />
             </div>
             <div className="form-group">
                 <label className="text-primary" for="password2">Verify Password</label>
-                <input
-                    placeholder="Re-enter your password here..."
-                    type="password"
-                    className="form-control"
-                    id="password2"
-                    name="password2"
-                    value = {password2}
-                    onChange={this.onChange}
-                />
+                  <input
+                      placeholder="Re-enter your password here..."
+                      type="password"
+                      className="form-control"
+                      id="password2"
+                      name="password2"
+                      value = {password2}
+                      onChange={this.onChange}
+                  />
             </div>
                 <button className="btn btn-info btn-block">
                     Register

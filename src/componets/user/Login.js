@@ -40,31 +40,31 @@ login = user => {
 
         return(
             <div className="container">
-            <h1 className="text-info">Login</h1>
-            <form onSubmit={this.onSubmit}>
-                <div className="form-group">
+                <h1 className="text-info">Login</h1>
+                    <form onSubmit={this.onSubmit}>
+            <div className="form-group">
                     <label className="text-primary" for="username">Username</label>
-                    <input
-                    placeholder="Enter your username here..."
-                    className="form-control"
-                    type="text"
-                    id="username"
-                    name="username"
-                    value={this.state.username}
-                    onChange = {this.onChange}
-                    />
-                </div>
+                        <input
+                            placeholder="Enter your username here..."
+                            className="form-control"
+                            type="text"
+                            id="username"
+                            name="username"
+                            value={this.state.username}
+                            onChange = {this.onChange}
+                        />
+            </div>
                 <div className="form-group">
                     <label className="text-primary" for="password">Password</label>
-                    <input
-                    placeholder="Enter your password here..."
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    name="password"
-                    value={this.state.password}
-                    onChange = {this.onChange}
-                    />
+                        <input
+                            placeholder="Enter your password here..."
+                            type="password"
+                            className="form-control"
+                            id="password"
+                            name="password"
+                            value={this.state.password}
+                            onChange = {this.onChange}
+                        />
                 </div>
                     <button className="btn btn-info btn-block">
                         Login

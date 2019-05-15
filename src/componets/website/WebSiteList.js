@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
-export default class WebSiteList extends Component {
+export default class WebsiteList extends Component {
 
 state={
     uid: this.props.match.params.uid,
@@ -52,16 +52,17 @@ filterWebsites = (websites) => {
                 )
             )
         }
+        
     </ul>
 </section>
-    <nav className="navbar navbar-dark bg-info fixed-bottom">
-        <div className="full-width">
-        <Link to={`/user/${uid}`}>
-            <i className="fas fa-user"/>
-        </Link>
-        </div>
-    </nav>
+        <nav className="navbar navbar-dark bg-info fixed-bottom">
+            <div className="full-width">
+                <Link to={`/user/${uid}`}>
+                    <i className="fas fa-user"/>
+                </Link>
+            </div>
+        </nav>
       </div>
-    )
+    );
   }
 }

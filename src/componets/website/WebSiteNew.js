@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import uuid from "uuid";
 
-export default class WebSiteNew extends Component {
+export default class WebsiteNew extends Component {
 
     state = {
         uid: this.props.match.params.uid,
@@ -48,15 +48,15 @@ export default class WebSiteNew extends Component {
     return (
       <div>
         <nav className="navbar navbar-dark bg-info fixed-top row">
-        <div className="col-lg-4 d-none d-lg-block">
-            <Link className="float-left pt-2" to="/user/:uid/website">
-                <i className="far fa-arrow-alt-circle-left"/>
-            </Link>
-            <span className="navbar-brand mb-0 h1 ml-3">Websites</span>
-            <Link className="float-right pt-2"  to="/user/:uid/website/:wid/page/newl">
-                <i className="fas fa-plus-circle"/>
-            </Link>
-        </div>
+            <div className="col-lg-4 d-none d-lg-block">
+                <Link className="float-left pt-2" to="/user/:uid/website">
+                    <i className="far fa-arrow-alt-circle-left"/>
+                </Link>
+                    <span className="navbar-brand mb-0 h1 ml-3">Websites</span>
+                <Link className="float-right pt-2"  to="/user/:uid/website/:wid/page/newl">
+                    <i className="fas fa-plus-circle"/>
+                </Link>
+            </div>
         <div className="col-lg-8">
                 <Link className="d-lg-none float-left pt-2" to="/user/:uid/website"
                 >
@@ -75,25 +75,25 @@ export default class WebSiteNew extends Component {
 <div className="col-lg-4 d-none d-lg-block border-right full-height">
     <div className="container-fluid">
         <ul className="list-group">
-        {this.state.websites.map(website => (
-            <li className="list-group-item" key={website._id}>
-                <Link to="/user/:uid/website/:wid/page">
-                    <span className="text-info">Address Book App</span>
-                </Link>
-                <Link className="float-right"
-                to={`/user/${uid}/website/${website._id }/page`}
-                >
-                    {website.name}
-                </Link>
-                <Link
-                    to={`/user/${uid}/website/${
-                        website._id
-                    }`}
-                    className="float-right"
-                >
-                    <i className="fas fa-cog" />
-                </Link>
-            </li>
+            {this.state.websites.map(website => (
+                <li className="list-group-item" key={website._id}>
+                    <Link to="/user/:uid/website/:wid/page">
+                        <span className="text-info">Address Book App</span>
+                    </Link>
+                    <Link className="float-right"
+                    to={`/user/${uid}/website/${website._id }/page`}
+                    >
+                        {website.name}
+                    </Link>
+                    <Link
+                        to={`/user/${uid}/website/${
+                            website._id
+                        }`}
+                        className="float-right"
+                    >
+                        <i className="fas fa-cog" />
+                    </Link>
+                </li>
             ))}
         </ul>
     </div>
@@ -129,12 +129,12 @@ export default class WebSiteNew extends Component {
                 value={this.state.description}
             />
         </div>
-        <Link to={`/user/${uid}/website`} className="btn btn-lg btn-warning">  
-            Cancel
-        </Link>
-        <button className="btn btn-info btn-block float-right">
-            Submit
-        </button>
+            <Link to={`/user/${uid}/website`} className="btn btn-lg btn-warning">  
+                Cancel
+            </Link>
+                <button className="btn btn-info btn-block float-right">
+                    Submit
+                </button>
         </div>
     </form>
     </div>
