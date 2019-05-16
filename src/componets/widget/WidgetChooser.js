@@ -35,7 +35,7 @@ export default class WidgetChooser extends Component {
             <span></span>
         </nav>
     <div className="container">
-        <ul className="list-group list-group-flush">
+        <ul className="list-group list-group-flush chooser-list">
             <li className="list-group-item">
                 <span className="text-info" onClick={this.createWidget.bind(this, "HEADING")}>
                     Header

@@ -49,25 +49,35 @@ export default class WebsiteNew extends Component {
       <div>
         <nav className="navbar navbar-dark bg-info fixed-top row">
             <div className="col-lg-4 d-none d-lg-block">
-                <Link className="float-left pt-2" to="/user/:uid/website">
+                <Link className="float-left pt-2" to={`/user/${uid}/website`}>
                     <i className="far fa-arrow-alt-circle-left"/>
                 </Link>
-                    <span className="navbar-brand mb-0 h1 ml-3">Websites</span>
-                <Link className="float-right pt-2"  to="/user/:uid/website/:wid/page/newl">
-                    <i className="fas fa-plus-circle"/>
-                </Link>
+                    <span className="navbar-brand mb-0 h1 ml-3">
+                        <strong>Websites</strong>
+                    </span>
+                    <span
+                        className="float-right pt-2" 
+                    >
+                        <i className="fas fa-plus-circle"/>
+                    </span>
             </div>
-        <div className="col-lg-8">
-                <Link className="d-lg-none float-left pt-2" to="/user/:uid/website"
+        <div className="col-lg-8 text-center">
+                <Link 
+                className="d-lg-none float-left pt-2" 
+                to={`/user/${uid}/website`}
                 >
                     <i className="far fa-arrow-alt-circle-left"/>
                 </Link>
             <span 
-                className="navbar-brand mb-0 h1">New Website
+                className="navbar-brand mb-0 h1">
+                <strong>New Website</strong>
             </span>
-            <Link to="/user/:uid/website">
+            <button 
+            form="newWebForm"
+            className="float-right btn"
+            >
                 <i className="fas fa-check pt-2"/>
-            </Link>
+            </button>
         </div>
     </nav>
 
@@ -129,7 +139,7 @@ export default class WebsiteNew extends Component {
                 value={this.state.description}
             />
         </div>
-            <Link to={`/user/${uid}/website`} className="btn btn-lg btn-warning">  
+            <Link to={`/user/${uid}/website`} className="btn btn-block btn-danger">  
                 Cancel
             </Link>
                 <button className="btn btn-info btn-block float-right">

@@ -26,15 +26,15 @@ filterWebsites = (websites) => {
     return (
         <div>
      
-        <nav className="navbar navbar-dark bg-info fixed-top">
-            <Link to= {`/user/${uid}`} >
+    <nav className="navbar navbar-dark bg-info fixed-top">
+            <Link to= {`/user/${uid}`}>
                 <i className="far fa-arrow-alt-circle-left" />
             </Link>
     <span className="navbar-brand mb-0 h1">Websites</span>
         <Link to={`/user/${uid}/website/new`}>
             <i className="fas fa-plus-circle" />
         </Link>
-        </nav>
+    </nav>
 
    
     <section className="container">
@@ -43,9 +43,15 @@ filterWebsites = (websites) => {
             this.state.websites.map(
                 (website) => (
             <li key={website._id} className="list-group-item">
-                <Link className="text-info" to ={`/user/${uid}/website/${website._id}/page`}>{website.name}
+                <Link
+                    className="text-info" 
+                    to ={`/user/${uid}/website/${website._id}/page`}
+                >{website.name}
                 </Link>
-                <Link className="float-right" to={`/user/${uid}/website/${website._id}`}>
+                <Link 
+                    className="float-right" 
+                    to={`/user/${uid}/website/${website._id}`}
+                >
                     <i className="fas fa-cogs"/>
                 </Link>
             </li>

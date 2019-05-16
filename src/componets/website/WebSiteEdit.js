@@ -70,23 +70,36 @@ export default class WebsiteEdit extends Component {
     return (
       <div>
         <nav className="navbar navbar-dark bg-info fixed-top row">
-        <div className="col-lg-4 d-none d-lg-block">
-            <Link className="float-left pt-2" to="/user/:uid/website">
-                <i className="far fa-arrow-alt-circle-left"/>
-            </Link>
-                <span className="navbar-brand mb-0 h1 ml-3">Websites</span>
-            <Link className="float-right pt-2" to="/user/:uid/website/:wid/page/newl">
-                <i className="fas fa-plus-circle"/>
-            </Link>
-        </div>
+            <div className="col-lg-4 d-none d-lg-block">
+                <Link
+                    className="float-left pt-2" 
+                    to={`/user/${uid}/website`}
+                >
+                    <i className="far fa-arrow-alt-circle-left"/>
+                </Link>
+                    <span className="navbar-brand mb-0 h1 ml-3">
+                        Websites
+                    </span>
+                <Link
+                    className="float-right pt-2" 
+                    to={`/user/${uid}/website/new`}
+                >
+                    <i className="fas fa-plus-circle"/>
+                </Link>
+            </div>
         <div className="col-lg-8">
-            <Link className="d-lg-none float-left pt-2" to="/user/:uid/website">
+            <Link 
+                className="d-lg-none float-left pt-2"
+                to={`/user/${uid}/website`}
+            >
                 <i className="far fa-arrow-alt-circle-left"/>
             </Link>
-                <span className="navbar-brand mb-0 h1">Edit Website</span>
-            <Link to="/user/:uid/website">
+                <span className="navbar-brand mb-0 h1 ml-5">
+                    Edit Website
+                </span>
+            <button form="editWebForm" className="float-right btn">
                 <i className="fas fa-check pt-2"/>
-            </Link>
+            </button>
         </div>
     </nav>
 
@@ -95,7 +108,10 @@ export default class WebsiteEdit extends Component {
         <div className="container-fluid">
             <ul className="list-group">
             {this.state.websites.map(website => (
-                <li key={website._id} className="list-group-item">
+                <li
+                    key={website._id} 
+                    className="list-group-item"
+                >
                     <Link
                         to={`/user/${uid}/website/${
                             website._id
@@ -124,7 +140,7 @@ export default class WebsiteEdit extends Component {
                         <b>Name</b>
                     </label>
                         <input 
-                            placeholder="Name of Website" 
+                            placeholder="Name of the Website" 
                             className="form-control" 
                             type="text" 
                             id="name" 
@@ -133,11 +149,14 @@ export default class WebsiteEdit extends Component {
                             onChange={this.onChange}
                         />
                     <div className="form-group">
-                        <label className="text-primary" htmlFor="description">
+                        <label 
+                            className="text-primary" 
+                            htmlFor="description"
+                        >
                             <b>Description</b>
                         </label>
                             <textarea 
-                                id="name"
+                                id="description"
                                 placeholder="Enter website description..." className="form-control" 
                                 name="description"
                                 type="text"
@@ -147,13 +166,16 @@ export default class WebsiteEdit extends Component {
                             />
                     </div>
                 </div>
-                <Link className="btn btn-danger btn-block" to={`/user/${uid}/website`}>
+                <Link 
+                    className="btn-info btn btn-block" 
+                    to={`/user/${uid}/website`}
+                >
                     Cancel
                 </Link>
                     <button
                         type="button"
                         onClick={this.delete}
-                        className="btn btn-lg btn-danger float-right"
+                        className="btn-block btn btn-danger"
                     >
                         Delete
                     </button>

@@ -198,7 +198,7 @@ render() {
                 <Route exact path= "/register" render = { props => (<Register {...props} users={this.state.users} addUser={this.addUser}/>)} />
                 <Route exact path= "/user/:uid/website" render = { props => (<WebsiteList {...props} websites={this.state.websites}/>)} />
                 <Route exact path= "/user/:uid/website/new" render= { props => (<WebsiteNew {...props} websites={this.state.websites}/>)}/>
-                <Route exact path= "/user/:uid/website/:wid" render= { props => (<WebsiteEdit {...props} websites={this.state.websites}/>)}/>
+                <Route exact path= "/user/:uid/website/:wid" render= { props => (<WebsiteEdit {...props} websites={this.state.websites} editWeb={this.editWeb}/>)}/>
                 <Route exact path="/user/:uid/website/:wid/page" render={ props => (<PageList {...props} pages={this.state.pages} />)} />
                 <Route exact path="/user/:uid/website/:wid/page/new" render={ props => (<PageNew {...props} pages={this.state.pages} addPage={this.addPage} />)} />
                 <Route exact path="/user/:uid/website/:wid/page/:pid" render={ props => (<PageEdit {...props} pages={this.state.pages} editPage={this.editPage} deletePage={this.deletePage} />)} />

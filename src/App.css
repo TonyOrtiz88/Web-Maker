@@ -65,7 +65,13 @@ label {
 
 /* pages*/
 
-nav.navbar-light a {
+nav.navbar-light a, nav.navbar-light button,
+nav.navbar-light i {
     color: aquamarine;
 
+}
+
+/* Widget */
+.chooser-list span:hover{
+    cursor: pointer;
 }

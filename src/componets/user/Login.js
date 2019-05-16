@@ -43,7 +43,7 @@ login = user => {
                 <h1 className="text-info">Login</h1>
                     <form onSubmit={this.onSubmit}>
             <div className="form-group">
-                    <label className="text-primary" for="username">Username</label>
+                    <label className="text-primary" htmlFor="username">Username</label>
                         <input
                             placeholder="Enter your username here..."
                             className="form-control"
@@ -55,7 +55,7 @@ login = user => {
                         />
             </div>
                 <div className="form-group">
-                    <label className="text-primary" for="password">Password</label>
+                    <label className="text-primary" htmlFor="password">Password</label>
                         <input
                             placeholder="Enter your password here..."
                             type="password"
