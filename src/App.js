@@ -20,14 +20,6 @@ import WidgetEdit from './componets/widget/WidgetEdit';
 
 class App extends Component {
 
-addUser = (user) => {
-   const newUsers = this.state.users;
-   newUsers.push(user);
-   this.setState({
-       users: newUsers
-   });
-}
-
 userNameInUse =(username) => {
     for(let user of this.state.users) {
         if(username === user.username){
@@ -192,10 +184,10 @@ render() {
   return (
       <Router className="app">
             <Switch>
-                <Route exact path="/" render = { props => (<Login {...props} users={this.state.users}/>)} />
-                <Route exact path="/login" render = { props => (<Login {...props} users={this.state.users}/>)} />
+                <Route exact path="/" component={Login}/>
+                <Route exact path="/login" component={Login}/>
+                <Route exact path= "/register"component={Register}/>
                 <Route exact path= "/user/:uid" render = { props => (<Profile {...props} users={this.state.users} updateUser = {this.updateUser} />)} />
-                <Route exact path= "/register" render = { props => (<Register {...props} users={this.state.users} addUser={this.addUser}/>)} />
                 <Route exact path= "/user/:uid/website" render = { props => (<WebsiteList {...props} websites={this.state.websites}/>)} />
                 <Route exact path= "/user/:uid/website/new" render= { props => (<WebsiteNew {...props} websites={this.state.websites}/>)}/>
                 <Route exact path= "/user/:uid/website/:wid" render= { props => (<WebsiteEdit {...props} websites={this.state.websites} editWeb={this.editWeb}/>)}/>

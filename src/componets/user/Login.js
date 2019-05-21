@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {Link} from "react-router-dom";
+import axios from "axios";
 
 export default class Login extends Component{
 
@@ -15,7 +16,6 @@ onChange = e => {
     })
 }
        
-     
 onSubmit = e => {
     e.preventDefault();
     const {username, password} = this.state;
@@ -26,21 +26,24 @@ onSubmit = e => {
        this.login(user); 
 }
 
-login = user => {
-    for(let item of this.props.users) {
-        if(item.username === user.username && item.password === user.password) {
-            this.props.history.push("/user/" + item._id)
-            return;
+login = async user => {
+    const res = await axios.get(`/api/user?username=${user.username}&password=${user.password}`)
+    if(res.data){
+        this.props.history.push(`/user/${res.data._id}`)
+        } else {
+            alert("invalid username or password");
         }
     }
-    alert("Your Username and/or Password doesn't match our records")
-}
 
     render() {
 
         return(
-            <div className="container">
-                <h1 className="text-info">Login</h1>
+            <div className="li-bg">
+                <h1 className= "text-white text-center">Welcome To All-Access Web Maker</h1>
+                <div className="container">
+                    <span></span>
+                    <span></span>
+                <h1 className="text-white text-center">Login</h1>
                     <form onSubmit={this.onSubmit}>
             <div className="form-group">
                     <label className="text-primary" htmlFor="username">Username</label>
@@ -73,6 +76,7 @@ login = user => {
                 Register
                 </Link>
             </form>
+            </div>
         </div>
         )
     }
