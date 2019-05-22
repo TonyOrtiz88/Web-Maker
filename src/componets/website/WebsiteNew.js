@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import uuid from "uuid";
+import axios from "axios";
 
 export default class WebsiteNew extends Component {
 
@@ -11,8 +12,9 @@ export default class WebsiteNew extends Component {
         description: ""
     };
 
-    componentDidMount() {
-        this.filterWebsites(this.props.websites);
+    async componentDidMount(){
+        const res = await axios.get(`/api/user/${this.state.uid}/website`);
+        this.filterWebsites(res.data);
     }
 
     filterWebsites = websites => {
@@ -30,7 +32,7 @@ export default class WebsiteNew extends Component {
         });
     };
 
-    onSubmit = e => {
+    onSubmit = async e => {
         const { name, description, uid } = this.state;
         e.preventDefault();
         const newWeb = {
@@ -39,7 +41,9 @@ export default class WebsiteNew extends Component {
             developerId: uid,
             description
         };
-        this.props.addWeb(newWeb);
+        
+        await axios.post("/api/website", newWeb);
+        
         this.props.history.push(`/user/${this.state.uid}/website`);
     };
 

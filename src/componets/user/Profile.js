@@ -16,7 +16,7 @@ export default class Profile extends Component {
   async componentDidMount(){
       const uid = this.props.match.params.uid;
       const res = await axios.get(`/api/user/${uid}`);
-      if(res.d){
+      if(res.data){
           this.showUser(res.data)
       } else {
           alert("this username is not in our system");
@@ -50,9 +50,11 @@ export default class Profile extends Component {
       const res = await axios.get(`/api/user?username=${username}`);
 
       if(res.data){
-        alert("Username is taken, Please try another one");
+        alert("Username is taken, please try another one");
           return;
-      } else {
+      }
+    } 
+    
         const newUser = {
           _id: this.props.match.params.uid,
           username,
@@ -62,10 +64,11 @@ export default class Profile extends Component {
           lastName
         }
           const res = await axios.put("/api/user", newUser);
+          alert("Updated user profile successfully ");
           this.showUser(res.data);
       }
-    }
-  }
+    
+ 
 
   render() {
     const {username, email, firstName, lastName} =this.state;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default class WebsiteEdit extends Component {
     state = {
@@ -10,8 +11,9 @@ export default class WebsiteEdit extends Component {
         description: ""
     };
 
-    componentDidMount() {
-        this.filterWebsites(this.props.websites);
+    async componentDidMount() {
+        const res = await axios.get(`/api/user/${this.state.uid}/website`);
+        this.filterWebsites(res.data);
         this.getWebsite(this.state.wid);
     }
 
