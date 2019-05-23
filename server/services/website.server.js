@@ -1,5 +1,5 @@
 module.exports = function(app) {
-    const websites = [
+    let websites = [
         { _id: "123", name: "Facebook", developerId: "456", description: "Lorem" },
         { _id: "234", name: "Tweeter",  developerId: "456", description: "Lorem" },
         { _id: "456", name: "Gizmodo",   developerId: "456", description: "Lorem" },
@@ -22,7 +22,31 @@ module.exports = function(app) {
         // Create new website
         app.post("/api/website", (req, res) => {
             const newWeb = req.body;
-            website.push(newWeb);
+            websites.push(newWeb);
             res.json(newWeb);
         })
+
+        // Delete website with given wid
+        app.delete("/api/website/:wid", (req, res) => {
+            const wid = req.params["wid"];
+            const web = websites.find((website)=> (website._id === wid));
+            
+            website.splice(website.indexOf(web), 1);
+            res.json(websites);
+        })
+
+        // update website
+        app.put("/api/website", (req, res) =>{
+            const newWeb = req.body;
+            websites = websites.map(
+                (website) => {
+                    if(website._id === newWeb._id) {
+                      website = newWeb 
+                    }
+                    return website;
+                }
+            )
+            res.json(newWeb);
+        })
+
 }

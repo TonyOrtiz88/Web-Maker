@@ -17,12 +17,6 @@ export default class WebsiteEdit extends Component {
         this.getWebsite(this.state.wid);
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.match.params.wid !== this.props.match.params.wid) {
-            this.getWebsite(this.props.match.params.wid);
-        }
-    }
-
     filterWebsites = websites => {
         const newWebsites = websites.filter(
             website => website.developerId === this.state.uid
@@ -34,7 +28,7 @@ export default class WebsiteEdit extends Component {
 
     getWebsite = wid => {
         let currentWeb;
-        for (let website of this.props.websites) {
+        for (let website of this.state.websites) {
             if (website._id === wid) {
                 currentWeb = website;
                 break;
@@ -52,18 +46,25 @@ export default class WebsiteEdit extends Component {
         });
     };
 
-    delete = () => {
-        this.props.deleteWeb(this.props.match.params.wid);
+    delete = async () => {
+        await axios.delete(`/api/website/${this.state.wid}`)
         this.props.history.push(`/user/${this.state.uid}/website`);
     };
 
-    onSubmit = e => {
+    onSubmit = async e => {
         e.preventDefault();
-        this.props.editWeb(
-            this.props.match.params.wid,
-            this.state.name,
-            this.state.description
-        );
+        // this.props.editWeb(
+        //     this.props.match.params.wid,
+        //     this.state.name,
+        //     this.state.description
+        //);
+        const newWeb = {
+            _id: this.state.wid,
+            name:this.state.name,
+            description: this.state.description,
+            developerId: this.state.uid
+        }
+        await axios.put("/api/website", newWeb)
         this.props.history.push(`/user/${this.state.uid}/website`);
     };
 
@@ -72,7 +73,7 @@ export default class WebsiteEdit extends Component {
     return (
       <div>
         <nav className="navbar navbar-dark bg-info fixed-top row">
-            <div className="col-lg-4 d-none d-lg-block">
+            <div className="col-lg-4 d-none d-lg-block text-white">
                 <Link
                     className="float-left pt-2" 
                     to={`/user/${uid}/website`}
@@ -83,7 +84,7 @@ export default class WebsiteEdit extends Component {
                         Websites
                     </span>
                 <Link
-                    className="float-right pt-2" 
+                    className="float-right pt-2 text-white " 
                     to={`/user/${uid}/website/new`}
                 >
                     <i className="fas fa-plus-circle"/>
@@ -96,7 +97,7 @@ export default class WebsiteEdit extends Component {
             >
                 <i className="far fa-arrow-alt-circle-left"/>
             </Link>
-                <span className="navbar-brand mb-0 h1 ml-5">
+                <span className="navbar-brand mb-0 h1">
                     Edit Website
                 </span>
             <button form="editWebForm" className="float-right btn">
@@ -139,7 +140,7 @@ export default class WebsiteEdit extends Component {
         <form id="editWebForm" onSubmit={this.onSubmit}>
                 <div className="form-group">
                     <label className="text-primary" htmlFor="name">
-                        <b>Name</b>
+                        <strong>Name</strong>
                     </label>
                         <input 
                             placeholder="Name of the Website" 
@@ -155,7 +156,7 @@ export default class WebsiteEdit extends Component {
                             className="text-primary" 
                             htmlFor="description"
                         >
-                            <b>Description</b>
+                            <strong>Description</strong>
                         </label>
                             <textarea 
                                 id="description"

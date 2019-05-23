@@ -59,11 +59,6 @@ export default class WebsiteNew extends Component {
                     <span className="navbar-brand mb-0 h1 ml-3">
                         <strong>Websites</strong>
                     </span>
-                    <span
-                        className="float-right pt-2" 
-                    >
-                        <i className="fas fa-plus-circle"/>
-                    </span>
             </div>
         <div className="col-lg-8 text-center">
                 <Link 
@@ -92,12 +87,12 @@ export default class WebsiteNew extends Component {
             {this.state.websites.map(website => (
                 <li className="list-group-item" key={website._id}>
                     <Link to="/user/:uid/website/:wid/page">
-                        <span className="text-info">Address Book App</span>
+                        <span className="text-info">{website.name}</span>
                     </Link>
                     <Link className="float-right"
                     to={`/user/${uid}/website/${website._id }/page`}
                     >
-                        {website.name}
+                        
                     </Link>
                     <Link
                         to={`/user/${uid}/website/${
@@ -118,7 +113,7 @@ export default class WebsiteNew extends Component {
     <form id="newWebForm" onSubmit={this.onSubmit}>
         <div className="form-group">
             <label className="text-primary" htmlFor="name">
-                <b>Name</b>
+                <strong>Name</strong>
             </label>
             <input
                 placeholder="Enter website name..."
@@ -131,7 +126,7 @@ export default class WebsiteNew extends Component {
             />
         <div className="form-group">
             <label className="text-primary" htmlFor="description">
-                <b>Description</b>
+                <strong>Description</strong>
             </label>
             <textarea
                 placeholder="Enter website description..." className="form-control" 
@@ -146,7 +141,7 @@ export default class WebsiteNew extends Component {
             <Link to={`/user/${uid}/website`} className="btn btn-block btn-danger">  
                 Cancel
             </Link>
-                <button className="btn btn-info btn-block float-right">
+                <button  className="btn btn-info btn-block float-right">
                     Submit
                 </button>
         </div>
