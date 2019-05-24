@@ -106,32 +106,32 @@ export default class WebsiteEdit extends Component {
         </div>
     </nav>
 
-<div className="row">
-    <div className="col-lg-4 d-none d-lg-block border-right full-height">
-        <div className="container-fluid">
-            <ul className="list-group">
-            {this.state.websites.map(website => (
-                <li
-                    key={website._id} 
-                    className="list-group-item"
-                >
-                    <Link
-                        to={`/user/${uid}/website/${
-                            website._id
-                        }/page`}
-                    >
-                        {website.name}
-                    </Link>
-                    <Link
-                        to={`/user/${uid}/website/${
-                            website._id
-                        }`}
-                        className="float-right"
+        <div className="row">
+            <div className="col-lg-4 d-none d-lg-block border-right full-height">
+                <div className="container-fluid">
+                    <ul className="list-group">
+                    {this.state.websites.map(website => (
+                        <li
+                            key={website._id} 
+                            className="list-group-item"
                         >
-                        <i className="fas fa-cog" />
-                    </Link>
-                </li>
-            ))}
+                            <Link
+                                to={`/user/${uid}/website/${
+                                    website._id
+                                }/page`}
+                            >
+                                {website.name}
+                            </Link>
+                            <Link
+                                to={`/user/${uid}/website/${
+                                    website._id
+                                }`}
+                                className="float-right"
+                                >
+                                <i className="fas fa-cog" />
+                            </Link>
+                        </li>
+                    ))}
             </ul>
         </div>
     </div>
