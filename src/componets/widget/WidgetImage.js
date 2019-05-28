@@ -26,7 +26,7 @@ export default class WidgetImage extends Component {
                             <span className="navbar-brand mb-0 h1 text-info">
                                 Widget Edit
                             </span>
-                            <button form="imgForm">
+                            <button className="btn" form="imgForm">
                                 <i className="fas fa-check"/>
                             </button>
                     </nav>

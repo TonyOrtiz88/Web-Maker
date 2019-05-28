@@ -26,14 +26,14 @@ export default class WidgetYoutube extends Component {
                 <span className="navbar-brand mb-0 h1 text-info"> 
                     Widget Edit
                 </span>
-                    <button form="btn youtubeForm">
+                    <button className="btn" form="youtubeForm">
                         <i className="fas fa-check"/>
                     </button>
         </nav>
         <div className="container">
             <form id="youtubeForm" onSubmit={this.onSubmit}>
                 <div className="form-group">
-                    <label className="text-info" for="name">
+                    <label className="text-info" htmlFor="name">
                         <b>Name</b>
                     </label>
                         <input 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import uuid from "uuid";
-import Axios from 'axios';
+import axios from 'axios';
 
 export default class PageNew extends Component {
 
@@ -33,8 +33,8 @@ onSubmit = async e => {
       websiteId: this.state.wid,
       title: this.state.title
   }
-      
-      await Axios.post("/api/page", newPage);
+      //this.props.addPage
+      await axios.post("/api/page", newPage);
       this.props.history.push(`/user/${this.state.uid}/website/${this.state.wid}/page`)
     }
   render() {

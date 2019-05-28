@@ -27,7 +27,7 @@ export default class WidgetHeading extends Component {
                     <span className="navbar-brand mb-0 h1 text-info">
                         Widget Edit
                     </span>
-                        <button form="headingForm">
+                        <button className="btn" form="headingForm">
                             <i className="fas fa-check"/>
                         </button>
             </nav>
