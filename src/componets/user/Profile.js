@@ -54,8 +54,7 @@ export default class Profile extends Component {
           return;
       }
     } 
-    
-        const newUser = {
+          const newUser = {
           _id: this.props.match.params.uid,
           username,
           password,
@@ -63,9 +62,9 @@ export default class Profile extends Component {
           firstName, 
           lastName
         }
-          const res = await axios.put("/api/user", newUser);
+         await axios.put("/api/user", newUser);
           alert("Updated user profile successfully ");
-          this.showUser(res.data);
+          
       }
     
  
