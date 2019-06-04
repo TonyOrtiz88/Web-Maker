@@ -48,7 +48,7 @@ export default class WidgetImage extends Component {
                                 </div>
                                 <div className="form-group">
                                     <label className="text-info" htmlFor="url">
-                                        <strong>"Url"</strong>
+                                        <strong>Url</strong>
                                     </label>
                                     <input
                                     placeholder="Enter the image url..." 

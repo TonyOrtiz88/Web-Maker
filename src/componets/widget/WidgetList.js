@@ -53,10 +53,10 @@ export default class WidgetList extends Component {
                                             <div key={widget._id}>
                                                 <div className="absolute-right">
                                                     <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget._id}`}>
-                                                        <i className="fas fa-cog second-color"/>
+                                                        <i className="fas fa-cog second-color float-right"/>
                                                     </Link>
                                                     <span>
-                                                        <i className="far fa-caret-square-down text-info"/>
+                                                        <i className="far fa-caret-square-down text-info float-right"/>
                                                     </span>
                                                 </div>
                                                 <div>
@@ -74,10 +74,10 @@ export default class WidgetList extends Component {
                                             <div key={widget._id}>
                                                <div className="absolute-right">
                                                     <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget._id}`}>
-                                                        <i className="fas fa-cog second-color"/>
+                                                        <i className="fas fa-cog second-color float-right"/>
                                                     </Link>
                                                     <span>
-                                                        <i className="far fa-caret-square-down text-info"/>
+                                                        <i className="far fa-caret-square-down text-info float-right"/>
                                                     </span>
                                                 </div>
                                                 <div>
@@ -95,10 +95,10 @@ export default class WidgetList extends Component {
                                             <div key={widget._id}>
                                                 <div className="absolute-right">
                                                     <Link to={`/user/${uid}/website/${wid}/page/${pid}/widget/${widget._id}`}>
-                                                        <i className="fas fa-cog second-color" />
+                                                        <i className="fas fa-cog second-color float-right" />
                                                     </Link>
                                                     <span>
-                                                        <i className="far fa-caret-square-down text-info"/>
+                                                        <i className="far fa-caret-square-down text-info float-right"/>
                                                     </span>
                                                     </div>
                                                         <div className="embed-responsive embed-responsive-16by9" style={{width: widget.width}}>
@@ -124,7 +124,7 @@ export default class WidgetList extends Component {
                             <Link
                                 to={`/user/${uid}`}
                              >
-                                <i className="fas fa-user"/>
+                                <i className="fas fa-user float-right"/>
                             </Link>
                         </div>
                     </nav>

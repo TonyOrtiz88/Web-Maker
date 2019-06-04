@@ -31,7 +31,6 @@ export default class WidgetEdit extends Component {
     getWidget = async (wgid) => {
         const res = await axios.get(`/api/widget/${wgid}`);
         const currentWidget = res.data;
-        
         this.setState({
             name: currentWidget.name? currentWidget.name : "",
             text: currentWidget.text,
@@ -61,6 +60,16 @@ export default class WidgetEdit extends Component {
             width,
             widgetType
         }
+        if(widgetType === "YOUTUBE") {
+            // split url into array of strings
+            const splited = newWidget.url.split("/");
+            // count number of strings we have in splited url 
+            const length = splited.length;
+            // get the last element in splited ur ---video id
+            const videoId = splited[length -1];
+            // parse url into embeded version 
+            newWidget.url = "https://www.youtube.com/embed/" + videoId;
+        }
         
         axios.put("/api/widget/", newWidget);
         this.props.history.push(`/user/${uid}/website/${wid}/page/${pid}/widget`)
@@ -88,7 +97,7 @@ export default class WidgetEdit extends Component {
                     onDelete={this.onDelete}
                 />
             );
-        } else if(widgetType==="IMAGE"){
+        } else if(widgetType ==="IMAGE"){
             return (
                 <WidgetImage 
                     name={name}
