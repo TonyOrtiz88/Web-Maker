@@ -8,12 +8,20 @@ export default class Register extends Component {
 state = {
   username:"",
   password: "",
-  password2: ""
+  password2: "",
+  showPasswordAlert: false,
+  showUsernameAlert: false,
+  showUsernameLengthAlert: false,
+  showPasswordLengthAlert: false
 }
 
 onChange = e=> {
   this.setState({
-    [e.target.name]: e.target.value
+    [e.target.name]: e.target.value,
+    showPasswordAlert: false,
+    showUsernameAlert: false,
+    showUsernameLengthAlert: false,
+    showPasswordLengthAlert: false
   })
 }
 
@@ -23,9 +31,28 @@ onSubmit = e=> {
   this.register(username, password, password2);
 }
 async register(username, password, password2) {
-  // Does password match
-    if(password !== password2){
-      alert("the password you enterd does not match");
+
+      // check username length
+      if(username.length < 5) {
+        this.setState({
+          showUsernameLengthAlert: true
+        })
+        return;
+      }
+
+      // check password length
+      if(password.length < 5){
+          this.setState({
+            showPasswordLengthAlert: true
+          })
+          return;
+      }
+
+      // Does password match
+      if(password !== password2){
+      this.setState({
+        showPasswordAlert: true
+      })
       return;
     }
 
@@ -34,7 +61,9 @@ const res = await axios.get(`/api/user?username=${username}`);
 console.log(res.data);
 
 if(res.data){
-  alert("Username is taken, Please try another one");
+    this.setState({
+      showUsernameAlert: true
+    })
     return;
 } else {
     const newUser = {
@@ -58,9 +87,30 @@ if(res.data){
       <div>
         <div className="container">
           <h1 className="text-info">Register</h1>
+          
+          {this.state.showPasswordAlert &&
+            (<div className="alert alert-danger">
+                The password you enterd do not match, please try again.
+            </div>)}
+
+          {this.state.showUsernameAlert &&
+              (<div className="alert alert-danger">
+                  This username is already in our database, please try another one.
+              </div>)}
+
+              {this.state.showUsernameLengthAlert &&
+            (<div className="alert alert-danger">
+                Username is too short, please make username at least 6 characters
+            </div>)}
+
+            {this.state.showPasswordLengthAlert &&
+              (<div className="alert alert-danger">
+                  Password is too short, please make password at least 6 characters
+               </div>)}
+
             <form onSubmit={this.onSubmit}>
             <div className="form-group">
-                <label className="text-primary" for="username">Username</label>
+                <label className="text-primary" htmlFor="username">Username</label>
                   <input 
                       placeholder="Create a username here..." className="form-control" 
                       type="text"

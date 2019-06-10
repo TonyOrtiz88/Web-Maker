@@ -10,7 +10,8 @@ export default class Profile extends Component {
     email: "",
     firstName: "",
     lastName: "",
-    oldUsername: ""
+    oldUsername: "",
+    showUpdateAlert: false
   }
 
   async componentDidMount(){
@@ -37,7 +38,8 @@ export default class Profile extends Component {
 
   onChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      showUpdateAlert: false
     });
   }
 
@@ -63,7 +65,10 @@ export default class Profile extends Component {
           lastName
         }
          await axios.put("/api/user", newUser);
-          alert("Updated user profile successfully ");
+          //alert("Updated user profile successfully ");
+          this.setState({
+            showUpdateAlert: true
+        })
           
       }
     
@@ -75,12 +80,15 @@ export default class Profile extends Component {
     return (
       <div>
     <nav className="navbar navbar-dark bg-info fixed-top">
-        <span className="navbar-brand mb-0 h1">Profile</span>
+        <span className="navbar-brand mb-0 h1 text-center">Profile</span>
           <button className="btn" form="profileForm">
             <i className="fas fa-check" />
           </button>
     </nav>
     <div className="container">
+        {this.state.showUpdateAlert &&
+          (<div className="alert alert-success">Updated Successfully </div>)}
+
       <form id="profileForm" onSubmit={this.onSubmit}>
             <div className="form-group">
                 <label className="text-primary" htmlFor="username">Username</label>

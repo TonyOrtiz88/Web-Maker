@@ -64,15 +64,20 @@ export default class WidgetHeading extends Component {
             <label className="text-info" htmlFor="size">
                 <strong>Size</strong>
             </label>
-                <input
+                <select 
                     id="size"
                     name="size"
-                    type="number" 
                     className="form-control" 
                     value={size}
                     onChange={this.onChange}
-                    placeholder="Size #"
-                />
+                >
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                </select>
         </div>
             <button
                 type="button"

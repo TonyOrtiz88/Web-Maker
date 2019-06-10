@@ -6,13 +6,15 @@ export default class Login extends Component{
 
 state = {
     username: "",
-    password: ""
+    password: "",
+    showAlert: false
     }
 
 
 onChange = e => {
     this.setState({
-    [e.target.name]: e.target.value
+    [e.target.name]: e.target.value,
+    showAlert: false
     })
 }
        
@@ -21,17 +23,21 @@ onSubmit = e => {
     const {username, password} = this.state;
     const user = {
         username,
-        password
+        password,
     }
        this.login(user); 
 }
 
 login = async user => {
     const res = await axios.get(`/api/user?username=${user.username}&password=${user.password}`)
+
     if(res.data){
         this.props.history.push(`/user/${res.data._id}`)
         } else {
-            alert("invalid username or password");
+            // alert ("invalid credentials")
+            this.setState({
+                showAlert: true
+            })
         }
     }
 
@@ -44,6 +50,10 @@ login = async user => {
                     <span></span>
                     <span></span>
                 <h1 className="text-white text-center">Login</h1>
+                    {
+                        this.state.showAlert? 
+                            (<div className="alert alert-danger">invalid username and/or password</div>): null
+                    }
                     <form onSubmit={this.onSubmit}>
             <div className="form-group">
                     <label className="text-primary" htmlFor="username">Username</label>
