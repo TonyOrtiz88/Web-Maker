@@ -4,6 +4,17 @@ import axios from 'axios';
 
 export default class WidgetChooser extends Component {
 
+    async componentDidMount(){
+
+
+    const isLoggedIn = await this.props.LoggedIn();
+
+      if(!isLoggedIn) {
+        this.props.history.push("/login")
+        return;
+      }
+    }
+
     createWidget = async type => {
         const {uid, wid, pid} = this.props.match.params
         const newWidget = {

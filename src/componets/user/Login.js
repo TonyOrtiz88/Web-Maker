@@ -29,17 +29,16 @@ onSubmit = e => {
 }
 
 login = async user => {
-    const res = await axios.get(`/api/user?username=${user.username}&password=${user.password}`)
-
-    if(res.data){
-        this.props.history.push(`/user/${res.data._id}`)
-        } else {
-            // alert ("invalid credentials")
-            this.setState({
-                showAlert: true
-            })
-        }
-    }
+    try {
+        const res = await axios.post('api/login', user);
+        this.props.history.push(`/user/${res.data._id}`);
+      } catch {
+          this.setState({
+              showAlert: true
+          })
+      }
+    };
+   
 
     render() {
 

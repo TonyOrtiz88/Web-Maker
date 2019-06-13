@@ -23,6 +23,14 @@ filterPage = async (wid) => {
 };
 
 async componentDidMount(){
+
+  const isLoggedIn = await this.props.LoggedIn();
+
+  if(!isLoggedIn) {
+    this.props.history.push("/login")
+    return;
+  }
+
     await this.setState({
       uid: this.props.match.params.uid,
       wid: this.props.match.params.wid

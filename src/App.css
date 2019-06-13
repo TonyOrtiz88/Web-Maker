@@ -61,6 +61,11 @@ label {
     color: aqua;
 }
 
+.second-color2{
+    background-color: aquamarine;
+    color: white;
+}
+
 /*Widget */
 
 .second-color{

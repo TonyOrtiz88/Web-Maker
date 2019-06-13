@@ -19,7 +19,15 @@ export default class WidgetEdit extends Component {
         pid: ""
     }
 
-    componentDidMount(){
+    async componentDidMount(){
+
+        const isLoggedIn = await this.props.LoggedIn();
+
+      if(!isLoggedIn) {
+        this.props.history.push("/login")
+        return;
+      }
+
         this.getWidget(this.props.match.params.wgid);
         this.setState({
             uid: this.props.match.params.uid,

@@ -15,6 +15,16 @@ export default class Profile extends Component {
   }
 
   async componentDidMount(){
+
+    const isLoggedIn = await this.props.loggedIn();
+
+      if(!isLoggedIn) {
+        this.props.history.push("/login")
+        return;
+      }
+
+
+
       const uid = this.props.match.params.uid;
       const res = await axios.get(`/api/user/${uid}`);
       if(res.data){
@@ -72,8 +82,12 @@ export default class Profile extends Component {
           
       }
     
- 
-
+        // Logout
+        logout = async () => {
+          await axios.post("/api/logout");
+          this.props.history.push("/login");
+      }
+   
   render() {
     const {username, email, firstName, lastName} =this.state;
 
@@ -144,9 +158,12 @@ export default class Profile extends Component {
               >
                 Websites
               </Link>
-            <Link className="btn btn-danger btn-block" to="/login">
+            <button type="button" onClick={this.logout} className="btn btn-danger btn-block">
                 Logout
-            </Link>
+            </button>
+              <Link className= "btn btn-block second-color2" to="/manage">
+                  Manage Users
+              </Link>
       </form>
         </div>
             <nav className="navbar navbar-dark bg-info fixed-bottom">

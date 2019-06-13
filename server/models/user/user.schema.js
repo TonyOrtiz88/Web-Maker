@@ -7,8 +7,10 @@ const UserSchema = mongoose.Schema(
         firstName: {type: String, default: ""},
         lastName: {type: String, default: ""},
         email: {type: String, default: ""},
-        dateCreated: {type: Date, default: Date.now}
-    }, {collection: "user"}
+        dateCreated: {type: Date, default: Date.now},
+        role: {type: String, enum: ["admin", "regular"], default: "regular" } 
+    }, 
+    {collection: "user"}
 );
 
 module.exports = UserSchema;
