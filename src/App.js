@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Login from './componets/user/Login';
 import Profile from './componets/user/Profile';
 import Register from './componets/user/Register';
+import UserManage from "./componets/user/UserManage";
 //Websites
 import WebsiteList from './componets/website/WebsiteList';
 import WebsiteNew from './componets/website/WebsiteNew';
@@ -19,13 +20,13 @@ import WidgetList from './componets/widget/WidgetList';
 import WidgetChooser from './componets/widget/WidgetChooser';
 import WidgetEdit from './componets/widget/WidgetEdit';
 
+
 class App extends Component {
 
     // Check if user is logged in
     loggedIn = async () => {
         const res = await axios.get('/api/loggedIn');
-     
-        return res.data !== 0;
+        return res.data;
       };
      
 
@@ -37,6 +38,7 @@ render() {
                 <Route exact path="/login" component={Login}/>
                 <Route exact path= "/register"component={Register}/>
                 <Route exact path= "/user/:uid" render={props => <Profile {...props} loggedIn={this.loggedIn} />}/>
+                <Route exact path = "/manage" render={props => <UserManage {...props} loggedIn={this.loggedIn} />}/>
                 <Route exact path= "/user/:uid/website"render={props => <WebsiteList {...props} loggedIn={this.loggedIn} />} />
                 <Route exact path= "/user/:uid/website/new" render={props => <WebsiteNew {...props} loggedIn={this.loggedIn} />}/>
                 <Route exact path= "/user/:uid/website/:wid" render={props => <WebsiteEdit {...props} loggedIn={this.loggedIn} />}/>

@@ -15,7 +15,7 @@ export default class PageEdit extends Component {
 
 async componentDidMount() {
 
-  const isLoggedIn = await this.props.LoggedIn();
+  const isLoggedIn = await this.props.loggedIn();
 
       if(!isLoggedIn) {
         this.props.history.push("/login")

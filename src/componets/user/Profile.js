@@ -11,19 +11,17 @@ export default class Profile extends Component {
     firstName: "",
     lastName: "",
     oldUsername: "",
-    showUpdateAlert: false
+    showUpdateAlert: false,
+    role: "" 
   }
 
   async componentDidMount(){
 
     const isLoggedIn = await this.props.loggedIn();
-
-      if(!isLoggedIn) {
+      if(!isLoggedIn === 0) {
         this.props.history.push("/login")
         return;
       }
-
-
 
       const uid = this.props.match.params.uid;
       const res = await axios.get(`/api/user/${uid}`);
@@ -35,14 +33,15 @@ export default class Profile extends Component {
   }
 
   showUser = (user) => {
-    const {username, email, firstName, lastName, password} =user;
+    const {username, email, firstName, lastName, password, role} =user;
     this.setState({
       username, 
       email, 
       firstName, 
       lastName, 
       password, 
-      oldUsername: username
+      oldUsername: username,
+      role
     });
   }
 
@@ -89,7 +88,7 @@ export default class Profile extends Component {
       }
    
   render() {
-    const {username, email, firstName, lastName} =this.state;
+    const {username, email, firstName, lastName, role} =this.state;
 
     return (
       <div>
@@ -161,9 +160,11 @@ export default class Profile extends Component {
             <button type="button" onClick={this.logout} className="btn btn-danger btn-block">
                 Logout
             </button>
-              <Link className= "btn btn-block second-color2" to="/manage">
+            { role === "admin" ? (
+                <Link className= "btn btn-block second-color2" to="/manage">
                   Manage Users
               </Link>
+              ) : null }
       </form>
         </div>
             <nav className="navbar navbar-dark bg-info fixed-bottom">
